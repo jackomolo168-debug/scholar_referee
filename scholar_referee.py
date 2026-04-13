@@ -45,6 +45,10 @@ class ScholarReferee:
         
         # Bind window close event
         self.root.protocol("WM_DELETE_WINDOW", self._on_closing)
+
+        # Bind keyboard shortcuts
+        self.root.bind('<space>', lambda e: self._start_timer() if not self.is_running else self._pause_timer())
+        self.root.bind('<Escape>', lambda e: self._reset_timer())
         
     def _center_window(self):
         """Center the window on the screen."""
